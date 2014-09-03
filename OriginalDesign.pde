@@ -72,7 +72,7 @@ void spl(){
 
 void draw(){
   background(0);
-  pointerX=(int)(Math.sin(theta)*height+height*0.5);
+  /*pointerX=(int)(Math.sin(theta)*height+height*0.5);
   pointerY=(int)(Math.cos(theta)*width+width*0.5);
   //ellipse(pointerX, pointerY,20,20);
   if(repcount>ballPos.length-1){repcount=ballPos.length-1; spl();}  
@@ -83,5 +83,5 @@ void draw(){
   drawLine();
   theta+=0.5;
   //System.out.println(height*0.5 +", " +800*0.5 );
-  
+  */
 }
