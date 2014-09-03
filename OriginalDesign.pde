@@ -2,7 +2,7 @@ void setup(){
   size(800,800);
   strokeWeight(5);
 }
-int size=50;
+float size=30;
 double theta=0;
 public class Ball{
   float x;
@@ -32,25 +32,31 @@ void drawBall(){
   if(ballPos[0]!= null){
     for(int i=0; i<ballPos.length; i++){
       if(ballPos[i]!= null){
-        ballPos[i].xSpeed=(ballPos[i].x - height*0.5)/-15.0;
-        ballPos[i].ySpeed=(ballPos[i].y - width *0.5)/-15.0;
+        ballPos[i].xSpeed=(ballPos[i].x - height*0.5)/-20.0;
+        ballPos[i].ySpeed=(ballPos[i].y - width *0.5)/-20.0;
         
         ballPos[i].x+=ballPos[i].xSpeed;
         ballPos[i].y+=ballPos[i].ySpeed;
         
+        size= (float)(20+dist(0.5*height,0.5*width, ballPos[i].x, ballPos[i].y)/8);
         noStroke();
-        fill(ballPos[i].R, ballPos[i].G,ballPos[i].B);
+        fill(ballPos[i].R, ballPos[i].G,ballPos[i].B,20+dist(0.5*height,0.5*width, ballPos[i].x, ballPos[i].y));
         ellipse(ballPos[i].x,ballPos[i].y, size,size);
       }
     }
   }
 }
-void drawLine(){
-  stroke(100,255,20);
-  
+void drawLine(){  
   for(int i=1; i<ballPos.length-1; i++){
     if(ballPos[i]!= null){
+      stroke(100,255,20,dist(0.5*height,0.5*width, ballPos[i].x, ballPos[i].y) );
       line(ballPos[i].x, ballPos[i].y, ballPos[i-1].x, ballPos[i-1].y);
+    }  
+  }  
+  for(int i=10; i<ballPos.length-1; i++){
+    if(ballPos[i]!= null){
+      stroke(100,255,20,dist(0.5*height,0.5*width, ballPos[i].x, ballPos[i].y) );
+      line(ballPos[i].x, ballPos[i].y, ballPos[i-10].x, ballPos[i-10].y);
     }  
   }  
 }  
