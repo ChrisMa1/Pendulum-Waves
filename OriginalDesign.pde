@@ -1,4 +1,4 @@
-void setup(){ 
+void setup(){
   size(800,800);
   strokeWeight(5);
 }
@@ -85,3 +85,4 @@ void draw(){
   //System.out.println(height*0.5 +", " +800*0.5 );
   
 }
+
