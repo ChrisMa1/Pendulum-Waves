@@ -4,7 +4,7 @@ void setup(){
 }
 float size=30;
 double theta=0;
-public class Ball{
+class Ball{
   float x;
   float y;
   float xSpeed;
