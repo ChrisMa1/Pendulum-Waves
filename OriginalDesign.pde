@@ -1,4 +1,4 @@
-void setup(){
+void setup(){ 
   size(800,800);
   strokeWeight(5);
 }
