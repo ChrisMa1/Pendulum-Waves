@@ -24,7 +24,7 @@ public class Ball{
   }
 }
 Ball ballPos[]=new Ball[200];
-int count=0;
+int repcount=0;
 int pointerX;
 int pointerY;
 
@@ -75,9 +75,9 @@ void draw(){
   pointerX=(int)(Math.sin(theta)*height+height*0.5);
   pointerY=(int)(Math.cos(theta)*width+width*0.5);
   //ellipse(pointerX, pointerY,20,20);
-  if(count>ballPos.length-1){count=ballPos.length-1; spl();}  
-  ballPos[count]=new Ball(pointerX, pointerY); 
-  count++;  
+  if(repcount>ballPos.length-1){repcount=ballPos.length-1; spl();}  
+  ballPos[repcount]=new Ball(pointerX, pointerY); 
+  repcount++;  
   //drawLine();
   drawBall();
   drawLine();
@@ -85,4 +85,3 @@ void draw(){
   //System.out.println(height*0.5 +", " +800*0.5 );
   
 }
-
