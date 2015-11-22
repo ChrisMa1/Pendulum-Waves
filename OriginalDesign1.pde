@@ -1,87 +1,61 @@
-void setup(){
-  size(800,800);
-  strokeWeight(5);
-}
-float side=30;
-double theta=0;
-public class Ball{
-  float x;
-  float y;
-  float xSpeed;
-  float ySpeed;
-  int R;
-  int G;
-  int B;
-  int O;
-  Ball(int x, int y){
-     this.x= x; 
-     this.y= y;
-     //this.xSpeed=(int)(Math.random()*10-5);
-     //this.ySpeed=(int)(Math.random()*10-5);
-     this.R=(int)(Math.random()*200+55);
-     this.G=(int)(Math.random()*200+55);
-     this.B=(int)(Math.random()*200+55);
-  }
-}
-Ball ballPos[]=new Ball[200];
-int count=0;
-int pointerX;
-int pointerY;
+boolean focused= true;
+boolean show=false;
 
-void drawBall(){
-  if(ballPos[0]!= null){
-    for(int i=0; i<ballPos.length; i++){
-      if(ballPos[i]!= null){
-        ballPos[i].xSpeed=(ballPos[i].x - height*0.5)/-20.0;
-        ballPos[i].ySpeed=(ballPos[i].y - width *0.5)/-20.0;
-        
-        ballPos[i].x+=ballPos[i].xSpeed;
-        ballPos[i].y+=ballPos[i].ySpeed;
-        
-        side= (float)(20+dist(0.5*height,0.5*width, ballPos[i].x, ballPos[i].y)/8);
-        noStroke();
-        fill(ballPos[i].R, ballPos[i].G,ballPos[i].B,20+dist(0.5*height,0.5*width, ballPos[i].x, ballPos[i].y));
-        ellipse(ballPos[i].x,ballPos[i].y, side,side);
-      }
-    }
-  }
-}
-void drawLine(){  
-  for(int i=1; i<ballPos.length-1; i++){
-    if(ballPos[i]!= null){
-      stroke(100,255,20,dist(0.5*height,0.5*width, ballPos[i].x, ballPos[i].y) );
-      line(ballPos[i].x, ballPos[i].y, ballPos[i-1].x, ballPos[i-1].y);
-    }  
-  }  
-  for(int i=10; i<ballPos.length-1; i++){
-    if(ballPos[i]!= null){
-      stroke(100,255,20,dist(0.5*height,0.5*width, ballPos[i].x, ballPos[i].y) );
-      line(ballPos[i].x, ballPos[i].y, ballPos[i-10].x, ballPos[i-10].y);
-    }  
-  }  
-}  
-void spl(){
-  for(int i=0; i<ballPos.length-1; i++){
-    if(i==ballPos.length-1){
-      ballPos[i]=null;
-    }else{
-      ballPos[i]=ballPos[i+1];
-    }
-  }    
+void setup() {
+  size(1500,800);
+   
+  textAlign(CENTER, CENTER);
 }
 
 void draw(){
-  background(0);
-  pointerX=(int)(Math.sin(theta)*height+height*0.5);
-  pointerY=(int)(Math.cos(theta)*width+width*0.5);
-  //ellipse(pointerX, pointerY,20,20);
-  if(count>ballPos.length-1){count=ballPos.length-1; spl();}  
-  ballPos[count]=new Ball(pointerX, pointerY); 
-  count++;  
-  //drawLine();
-  drawBall();
-  drawLine();
-  theta+=0.5;
-  //System.out.println(height*0.5 +", " +800*0.5 );
-  
+ String time="AM";
+ int hr=hour();
+ String s=str(second());
+ if(focused){
+   textSize(70); 
+   fill(0,0,0,20);
+   rect(0,0,width, height);
+   fill(255,0,0);
+   text("FOCUSED", width/2, height/2);
+   textSize(30);
+   if(hr>12){hr-=12;time="PM";}else{time="AM";};
+   if(second()<10){s="0"+s;};
+   text(hr+":"+ minute()+":"+s+time, width/2, height/2 +50);
+ }else{
+   textSize(70); 
+   fill(255,0,0,20);
+   rect(0,0,width, height);
+   fill(0,0,0);
+   text("BREAK", width/2, height/2);
+ }
+ if(show){cross();};
 }
+
+void cross (){
+ stroke(0,255,0);
+ noFill();
+ strokeWeight(4);
+ ellipse(mouseX, mouseY, 75,75);
+ strokeWeight(2);
+ line(0, mouseY, mouseX-50, mouseY);
+ line(displayWidth, mouseY, mouseX+50, mouseY);
+ line(mouseX, 0, mouseX, mouseY-50);
+ line( mouseX,displayHeight, mouseX, mouseY+50); 
+}
+void mousePressed() {
+  if(focused){
+    background(0,0,0);
+    focused =false; 
+  }else{
+   focused = true; 
+  }
+}
+void keyPressed(){
+ if( key==' ' && show){
+   show=false; 
+ } else{
+   show=true;
+ }
+}
+
+
