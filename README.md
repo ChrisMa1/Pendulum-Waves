@@ -1,4 +1,4 @@
-SampleAssignment
+FOCUS
 ================
 
-A Sample Assignment that will go through the workflow of gi
+A simplistic work timer based on the Pomodoro Technique.
