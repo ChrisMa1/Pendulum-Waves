@@ -12,10 +12,10 @@ void setup() {
 }
 
 void draw() {
-  if (pmin==49 && minute()==50) { // senses when minute changes,before pmin upates (line 18)
-    background(0); // try running without this, text can be seen behind red break bg
+  if (pmin==49 && minute()==50) { // trust me, you need this
+    background(0); 
   }
-  if (pmin!=minute()) { //sets pmin to minute when minute value changes
+  if (pmin!=minute()) { 
     pmin=minute();
   }
   if (minute()<50) {
