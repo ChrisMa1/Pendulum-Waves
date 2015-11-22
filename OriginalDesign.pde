@@ -4,7 +4,7 @@ String currentTime=null;
 int pmin=minute(); //alternate "previous" minute holder variable
 
 void setup() {
-  fullScreen();//size(1500,800); //this new function is pretty cool
+  size(1500,800); //this new function is pretty cool
   textAlign(CENTER, CENTER); //text coordinates are centered default was (LEFT, BASELINE)
   if (minute()>=50) { //needed for initializing if not true
     focus=false;
