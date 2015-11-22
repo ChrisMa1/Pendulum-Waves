@@ -71,9 +71,9 @@ void cross () {          //   aiming repticle
   ellipse(mouseX, mouseY, 75, 75);
   strokeWeight(2);
   line(0, mouseY, mouseX-50, mouseY);
-  line(displayWidth, mouseY, mouseX+50, mouseY);
+  line(width, mouseY, mouseX+50, mouseY);
   line(mouseX, 0, mouseX, mouseY-50);
-  line( mouseX, displayHeight, mouseX, mouseY+50);
+  line( mouseX, height, mouseX, mouseY+50);
 }
 void keyPressed() {
   if ( key==' ' && showRept) {
