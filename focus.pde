@@ -4,7 +4,7 @@ int pmin=minute(); //alternate "previous" minute holder variable
 
 void setup() {
   //fullScreen(); //this new function is pretty cool but doesn't work in js
-  size(800, 500); 
+  size(1000, 750); 
   textAlign(CENTER, CENTER); //text coordinates are centered default was (LEFT, BASELINE)
   }
 
