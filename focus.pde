@@ -1,16 +1,12 @@
-boolean focus= true; //focus or break
+boolean focus; //focus or break
 boolean showRept=false; // show green aim reticle 
-String currentTime=null; 
 int pmin=minute(); //alternate "previous" minute holder variable
 
 void setup() {
   //fullScreen(); //this new function is pretty cool but doesn't work in js
-  size(1500,800); 
+  size(1500, 800); 
   textAlign(CENTER, CENTER); //text coordinates are centered default was (LEFT, BASELINE)
-  if (minute()>=50) { //needed for initializing if not true
-    focus=false;
   }
-}
 
 void draw() {
   if (pmin==49 && minute()==50) { // senses when minute changes,before pmin upates (line 18)
@@ -19,14 +15,10 @@ void draw() {
   if (pmin!=minute()) { //sets pmin to minute when minute value changes
     pmin=minute();
   }
-  if (minute()<50) {
-    focus=true;
-  } else {
-    focus=false;
-  }; 
+  focus=(minute()<50)? true : false;
   textSize(70); 
   if (focus) {
-    fill(0, 0, 0, 20);          //these two lines form
+    fill(0, 0, 0, 20);          //these two lines code for
     rect(0, 0, width, height);   //a "fading" background
     fill(255, 0, 0);
     text("FOCUSED", width/2, height/2);
@@ -45,23 +37,11 @@ void draw() {
   };
 }
 
-String time() { //returns complete time string
-  String time=" AM";
-  int hr=hour();
-  String m=str(minute());
-  String s=str(second());
-  hr=abs(hr-12);
-  if (hr>12) { 
-    time=" PM";
-  } else {
-    time=" AM";
-  };
-  if (minute()<10) {
-    m="0"+m;
-  };
-  if (second()<10) {
-    s="0"+s;
-  }
+String time() {             //returns complete time string
+  int hr=(hour()+11)%12+1;
+  String m=(minute()<10)? "0"+str(minute()) : str(minute()); //if(minute()<10){m="0"+m;}
+  String s=(second()<10)? "0"+str(second()) : str(second()); //if(second()<10){s="0"+s;}
+  String time = (hour()>=12)? " PM" : " AM";
   return hr+":"+ m+":"+s+time;
 }
 
@@ -83,11 +63,3 @@ void keyPressed() {
     showRept=true;
   }
 }
-/*void mousePressed() {
- if(focus){
- background(0,0,0);
- focus =false; 
- }else{
- focus = true; 
- }
- }*/
