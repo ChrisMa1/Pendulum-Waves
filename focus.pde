@@ -4,7 +4,7 @@ int pmin=minute(); //alternate "previous" minute holder variable
 
 void setup() {
   //fullScreen(); //this new function is pretty cool but doesn't work in js
-  size(1000, 750); 
+  size(1000, 700); 
   textAlign(CENTER, CENTER); //text coordinates are centered default was (LEFT, BASELINE)
   }
 
@@ -16,7 +16,7 @@ void draw() {
     pmin=minute();
   }
   focus=(minute()<50)? true : false;
-  textSize(70); 
+  textSize(68); 
   if (focus) {
     fill(0, 0, 0, 20);          //these two lines code for
     rect(0, 0, width, height);   //a "fading" background
