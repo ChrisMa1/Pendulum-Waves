@@ -9,7 +9,7 @@ void setup() {
   }
 
 void draw() {
-  if (pmin==49 && minute()==50) { // senses when minute changes,before pmin upates (line 18)
+  if (pmin==49 && minute()==50) { // senses when minute changes
     background(0); // try running without this, text can be seen behind red break bg
   }
   if (pmin!=minute()) { //sets pmin to minute when minute value changes
