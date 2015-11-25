@@ -4,7 +4,7 @@ int pmin=minute(); //alternate "previous" minute holder variable
 
 void setup() {
   //fullScreen(); //this new function is pretty cool but doesn't work in js
-  size(1500, 800); 
+  size(800, 500); 
   textAlign(CENTER, CENTER); //text coordinates are centered default was (LEFT, BASELINE)
   }
 
@@ -52,7 +52,7 @@ void cross () {          //   aiming repticle
   ellipse(mouseX, mouseY, 75, 75);
   strokeWeight(2);
   line(0, mouseY, mouseX-50, mouseY);
-  line(displayWidth, mouseY, mouseX+50, mouseY);
+  line(width, mouseY, mouseX+50, mouseY);
   line(mouseX, 0, mouseX, mouseY-50);
   line( mouseX, displayHeight, mouseX, mouseY+50);
 }
