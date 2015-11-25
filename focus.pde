@@ -4,7 +4,7 @@ String currentTime=null;
 int pmin=minute(); //alternate "previous" minute holder variable
 
 void setup() {
-  size(1500,800); //this new function is pretty cool
+  fullScreen();//size(1500,800); //this new function is pretty cool
   textAlign(CENTER, CENTER); //text coordinates are centered default was (LEFT, BASELINE)
   if (minute()>=50) { //needed for initializing if not true
     focus=false;
@@ -12,10 +12,10 @@ void setup() {
 }
 
 void draw() {
-  if (pmin==49 && minute()==50) { // trust me, you need this
-    background(0); 
+  if (pmin==49 && minute()==50) { // senses when minute changes,before pmin upates (line 18)
+    background(0); // try running without this, text can be seen behind red break bg
   }
-  if (pmin!=minute()) { 
+  if (pmin!=minute()) { //sets pmin to minute when minute value changes
     pmin=minute();
   }
   if (minute()<50) {
@@ -49,8 +49,8 @@ String time() { //returns complete time string
   int hr=hour();
   String m=str(minute());
   String s=str(second());
-  if (hr>12 || hr==0) {
-    hr=abs(hr-12); 
+  hr=abs(hr-12);
+  if (hr>12) { 
     time=" PM";
   } else {
     time=" AM";
@@ -71,9 +71,9 @@ void cross () {          //   aiming repticle
   ellipse(mouseX, mouseY, 75, 75);
   strokeWeight(2);
   line(0, mouseY, mouseX-50, mouseY);
-  line(width, mouseY, mouseX+50, mouseY);
+  line(displayWidth, mouseY, mouseX+50, mouseY);
   line(mouseX, 0, mouseX, mouseY-50);
-  line( mouseX, height, mouseX, mouseY+50);
+  line( mouseX, displayHeight, mouseX, mouseY+50);
 }
 void keyPressed() {
   if ( key==' ' && showRept) {
@@ -90,4 +90,3 @@ void keyPressed() {
  focus = true; 
  }
  }*/
- //i lub sabrina :P
