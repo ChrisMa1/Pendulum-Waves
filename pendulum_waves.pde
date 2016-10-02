@@ -19,7 +19,7 @@ class Pendulum{
     x=xpos;
     y=ypos;
     leng=l;
-    freq=bpm/60;println(freq);
+    freq=bpm/60;
     ballX=x+leng*sin(degrees(startAngle));
     ballY=y+leng*cos(degrees(startAngle));
     count=0;
