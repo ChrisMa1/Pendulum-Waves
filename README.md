@@ -1,4 +1,6 @@
-FOCUS
+Pendulum Waves 
 ================
 
-A simplistic work timer based on the Pomodoro Technique.
+Based on a real-world phenomenon.
+
+https://www.youtube.com/watch?v=yVkdfJ9PkRQ
